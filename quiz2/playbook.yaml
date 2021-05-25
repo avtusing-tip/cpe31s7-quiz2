@@ -1,0 +1,27 @@
+---
+- name: Plays for the Ubuntu VM
+  hosts: target
+
+  tasks:
+  - name: Change motd  
+    lineinfile:
+      path: '/etc/motd'
+      line: 'Ansible Managed by 1812699'
+      state: present
+
+  - name: Plays for the Centos VM
+    user: 
+      name: avtusing-tip
+      state: present
+      password: AnsibleManaged
+
+  - name: Plays for the fedora VM
+    lineinfile:
+      path: '/etc/sudoers'
+      line: 'avtusing-tip ALL=(ALL) NOPASSWD: ALL'
+      state: present
+
+  - name: sysad2 
+    group:
+      name: sysad2
+      state: present
